@@ -54,7 +54,7 @@
   $(document).ready(loadAllUsers());
 
   function loadAllUsers(){
-		
+
 	    var arrayReturn = [];
 	            $.ajax({
 	                url: "http://localhost:8081/UserRegister/user",
@@ -75,7 +75,7 @@
 		}
  }
 
-  function formSubmit() {	
+  function formSubmit() {
 	  $.ajax({
 		    url: 'http://localhost:8081/UserRegister/user',
 		    dataType: 'json',
@@ -84,7 +84,7 @@
 		    data: JSON.stringify( { "name": $('#name').val(), "age": $('#age').val(),"salary": $('#salary').val(),"status": $('#status').val() } ),
 		    processData: false,
 		    success: function( data){
-		       
+		        location.reload();
 		    },
 		    error: function(){
 		        
@@ -92,7 +92,7 @@
 		});
 
 
-	    
+
 	}
 
 function deleteRecord(id){

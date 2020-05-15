@@ -6,7 +6,6 @@ import javafx.application.Application;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class UserRegisterApplicationTest {
 
@@ -42,7 +40,7 @@ class UserRegisterApplicationTest {
 	}
 	@Test
 	void getUserAPI(){
-		User user= testRestTemplate.getForObject("http://localhost:" + port + "/UserRegister/user/12",User.class);
+		User user= testRestTemplate.getForObject("http://localhost:" + port + "/UserRegister/user/47",User.class);
 		assertNotNull(user);
 	}
 	@Test
@@ -54,7 +52,7 @@ class UserRegisterApplicationTest {
 	@Test
 	void deleteUser(){
 		int countBeforeDelete = getUserCount();
-		testRestTemplate.delete("http://localhost:" + port + "/UserRegister/user/12");
+		testRestTemplate.delete("http://localhost:" + port + "/UserRegister/user/23");
 		assertEquals(countBeforeDelete-1,getUserCount());
 	}
 

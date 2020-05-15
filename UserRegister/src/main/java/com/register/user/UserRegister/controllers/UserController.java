@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.register.user.UserRegister.models.User;
 import com.register.user.UserRegister.services.UserService;
 
+import javax.persistence.EntityNotFoundException;
+
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -24,12 +26,18 @@ public class UserController {
 	
 	@GetMapping
 	public List<User> getAllUsers() {
+
 		return userService.getAllUsers();
 	}
 	
 	@GetMapping("{id}")
 	public Optional<User> getUser(@PathVariable int id) {
-		return userService.getUser(id);
+		Optional<User> user =userService.getUser(id);
+		if(user==null){
+			System.out.println("NULL");
+			throw new EntityNotFoundException();
+		}
+		return user;
 	}
 	
 	@PostMapping
